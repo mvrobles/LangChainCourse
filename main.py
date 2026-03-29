@@ -1,5 +1,6 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 
 from dotenv import load_dotenv
 
@@ -9,7 +10,6 @@ load_dotenv()
 
 def main():
     print("Hello from langchaincourse!")
-    print(os.environ.get('OPENAI_API_KEY'))
     information = """
 Dario Amodei (born 1983) is an American artificial intelligence (AI) researcher and entrepreneur. In 2021, he and his sister Daniela Amodei co-founded Anthropic, the company behind the large language model series Claude.[2] Prior to that, he was the vice president of research at OpenAI.[3][4]
 
@@ -42,6 +42,7 @@ As of February 2026, Anthropic has an estimated value of $380 billion,[25] with 
 
     # NOTE Temperatura - Deterministico. Sirve para resumen - código
     llm = ChatOpenAI(temperature=0, model = 'gpt-5') 
+    #llm = ChatOllama(temperature=0, model = 'gemma3:270m') 
 
     # NOTE LangChain Expression Language (LCEL) - prompt template and a llm. 
     # The pipe | creates a runnable chain by connecting output of the left component as an input to the right component
